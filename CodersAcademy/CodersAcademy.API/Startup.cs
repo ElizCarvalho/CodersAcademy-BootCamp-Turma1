@@ -53,7 +53,7 @@ namespace CodersAcademy.API
 					}
 				});
 
-				#region Necessa´rio para usar o summary para detalhar os métodos no Swagger
+				#region Necessario para usar o summary para detalhar os métodos no Swagger
 				var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
 				var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
 				c.IncludeXmlComments(xmlPath);
