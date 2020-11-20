@@ -37,6 +37,7 @@ namespace CodersAcademy.API
 			services.AddAutoMapper(typeof(Startup).Assembly);
 
 			services.AddScoped<AlbumRepository>();
+			services.AddScoped<MusicRepository>();
 
 			services.AddSwaggerGen(c =>
 			{

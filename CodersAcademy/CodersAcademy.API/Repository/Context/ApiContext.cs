@@ -9,6 +9,7 @@ namespace CodersAcademy.API.Repository.Context
 	{
 
 		public DbSet<Album> Albums{ get; set; }
+		public DbSet<Music> Musics{ get; set; }
 
 		public ApiContext(DbContextOptions<ApiContext> options) : base(options)
 		{

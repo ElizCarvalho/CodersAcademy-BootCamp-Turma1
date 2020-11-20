@@ -28,7 +28,26 @@
             <summary>
             Delete a specific Album by Id.
             </summary>
-            <param name="id"></param>
+        </member>
+        <member name="M:CodersAcademy.API.Controllers.MusicController.GetAll">
+            <summary>
+            Get a list with all musics registered.
+            </summary>
+        </member>
+        <member name="M:CodersAcademy.API.Controllers.MusicController.GetById(System.Guid)">
+            <summary>
+            Get an music by Id.
+            </summary>
+        </member>
+        <member name="M:CodersAcademy.API.Controllers.MusicController.Save(CodersAcademy.API.ViewModel.Request.MusicRequest)">
+            <summary>
+            Create an Album.
+            </summary>
+        </member>
+        <member name="M:CodersAcademy.API.Controllers.MusicController.Delete(System.Guid)">
+            <summary>
+            Delete a specific Album by Id.
+            </summary>
         </member>
     </members>
 </doc>

@@ -10,30 +10,29 @@ namespace CodersAcademy.API.Repository
 {
 	public class AlbumRepository
 	{
-		//o init permite atribuir o valor uma unica vez (como na criação do objeto), ​depois disso não pode mais ser alterado
-		private ApiContext Context { get; init; }
+		private readonly ApiContext _context;
 
 		public AlbumRepository(ApiContext context)
 		{
-			this.Context = context;
+			this._context = context;
 		}
 
-		public async Task<IList<Album>> GetAlbumsAsync()
-			=> await this.Context.Albums.Include(x => x.Musics).ToListAsync();
+		public async Task<IList<Album>> GetAllAsync()
+			=> await this._context.Albums.Include(x => x.Musics).ToListAsync();
 
-		public async Task<Album> GetAlbumByIdAsync(Guid id)
-			=> await this.Context.Albums.Where(x => x.Id == id).Include(x => x.Musics).FirstOrDefaultAsync();
+		public async Task<Album> GetByIdAsync(Guid id)
+			=> await this._context.Albums.Where(x => x.Id == id).Include(x => x.Musics).FirstOrDefaultAsync();
 
 		public async Task DeleteAsync(Album model)
 		{
-			this.Context.Remove(model);
-			await this.Context.SaveChangesAsync();
+			this._context.Remove(model);
+			await this._context.SaveChangesAsync();
 		}
 
 		public async Task SaveAsync(Album album)
 		{
-			await this.Context.Albums.AddAsync(album);
-			await this.Context.SaveChangesAsync();
+			await this._context.Albums.AddAsync(album);
+			await this._context.SaveChangesAsync();
 		}
 	}
 }
