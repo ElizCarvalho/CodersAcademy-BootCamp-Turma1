@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CodersAcademy.API</name>
+    </assembly>
+    <members>
+        <member name="M:CodersAcademy.API.Controllers.AlbumController.GetAll">
+            <summary>
+            Get a list with all albuns registered.
+            </summary>
+        </member>
+        <member name="M:CodersAcademy.API.Controllers.AlbumController.GetById(System.Guid)">
+            <summary>
+            Get an album by Id.
+            </summary>
+        </member>
+        <member name="M:CodersAcademy.API.Controllers.AlbumController.GetMusicsById(System.Guid)">
+            <summary>
+            Get the musics of especific album by Id.
+            </summary>
+        </member>
+        <member name="M:CodersAcademy.API.Controllers.AlbumController.Save(CodersAcademy.API.ViewModel.Request.AlbumRequest)">
+            <summary>
+            Create an Album.
+            </summary>
+        </member>
+        <member name="M:CodersAcademy.API.Controllers.AlbumController.Delete(System.Guid)">
+            <summary>
+            Delete a specific Album by Id.
+            </summary>
+            <param name="id"></param>
+        </member>
+    </members>
+</doc>

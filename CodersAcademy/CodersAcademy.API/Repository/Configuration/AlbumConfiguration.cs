@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CodersAcademy.API.Repository.Mapping
+namespace CodersAcademy.API.Repository.Configuration
 {
-	public class AlbumMapping : IEntityTypeConfiguration<Album>
+	public class AlbumConfiguration : IEntityTypeConfiguration<Album>
 	{
 		public void Configure(EntityTypeBuilder<Album> builder)
 		{

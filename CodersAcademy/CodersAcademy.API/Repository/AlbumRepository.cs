@@ -1,4 +1,5 @@
 ﻿using CodersAcademy.API.Model;
+using CodersAcademy.API.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,18 +11,18 @@ namespace CodersAcademy.API.Repository
 	public class AlbumRepository
 	{
 		//o init permite atribuir o valor uma unica vez (como na criação do objeto), ​depois disso não pode mais ser alterado
-		private MusicContext Context { get; init; }
+		private ApiContext Context { get; init; }
 
-		public AlbumRepository(MusicContext context)
+		public AlbumRepository(ApiContext context)
 		{
 			this.Context = context;
 		}
 
 		public async Task<IList<Album>> GetAlbumsAsync()
-			=> await this.Context.Albums.ToListAsync();
+			=> await this.Context.Albums.Include(x => x.Musics).ToListAsync();
 
 		public async Task<Album> GetAlbumByIdAsync(Guid id)
-			=> await this.Context.Albums.Where(x => x.Id == id).FirstOrDefaultAsync();
+			=> await this.Context.Albums.Where(x => x.Id == id).Include(x => x.Musics).FirstOrDefaultAsync();
 
 		public async Task DeleteAsync(Album model)
 		{

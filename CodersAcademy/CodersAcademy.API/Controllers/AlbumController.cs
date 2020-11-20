@@ -22,12 +22,18 @@ namespace CodersAcademy.API.Controllers
 			Mapper = mapper;
 		}
 
+		/// <summary>
+		/// Get a list with all albuns registered.
+		/// </summary>
 		[HttpGet]
 		public async Task<IActionResult> GetAll()
 		{
 			return Ok(await this.Repository.GetAlbumsAsync());
 		}
 
+		/// <summary>
+		/// Get an album by Id.
+		/// </summary>
 		[HttpGet("{id}")]
 		public async Task<IActionResult> GetById(Guid id)
 		{
@@ -37,6 +43,22 @@ namespace CodersAcademy.API.Controllers
 			return result is not null ? Ok(result) : NotFound();
 		}
 
+		/// <summary>
+		/// Get the musics of especific album by Id.
+		/// </summary>
+		[HttpGet("{id}/Musics")]
+		public async Task<IActionResult> GetMusicsById(Guid id)
+		{
+			var result = await this.Repository.GetAlbumByIdAsync(id);
+
+			//Somente C#9 
+			return result is not null ? Ok(result.Musics) : NotFound();
+		}
+
+
+		/// <summary>
+		/// Create an Album.
+		/// </summary>
 		[HttpPost]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status201Created)]
@@ -52,6 +74,10 @@ namespace CodersAcademy.API.Controllers
 			return Created($"/{album.Id}", album); //201
 		}
 
+		/// <summary>
+		/// Delete a specific Album by Id.
+		/// </summary>
+		/// <param name="id"></param>
 		[HttpDelete("{id}")]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[ProducesResponseType(StatusCodes.Status204NoContent)] 
