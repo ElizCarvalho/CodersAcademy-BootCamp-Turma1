@@ -2,7 +2,9 @@
     <!-- CONTENT -->
     <div class="content">
         <div class="cards">
-            <!-- <div class="card" *ngFor="let item of albums" (click)="detail(item);">
+            <!-- <div class="card" *ngFor="let item of albums" (click)="detail(item);"> -->
+            <div class="card" *ngFor="let item of albums">
+                 <!--PREVIEW-->
                 <div class="card-preview">
                     <div class="fuse-card">
                         <div class="p-16" fxLayout="row" fxLayoutAlign="space-between center">
@@ -19,11 +21,11 @@
                         </div>
 
                         <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="start center">
-                            <button mat-button color="accent"><strong>VER DETALHES</strong></button>
+                            <button mat-button color="accent" (click)="detail(item)"><strong>VER DETALHES</strong></button>
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
 </div>

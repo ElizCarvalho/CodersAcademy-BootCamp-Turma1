@@ -59,5 +59,30 @@
             Get a list with all users registered.
             </summary>
         </member>
+        <member name="M:CodersAcademy.API.Controllers.UserController.SignIn(CodersAcademy.API.ViewModel.Request.SignInRequest)">
+            <summary>
+            Authenticate an user by email and password.
+            </summary>
+        </member>
+        <member name="M:CodersAcademy.API.Controllers.UserController.Register(CodersAcademy.API.ViewModel.Request.RegisterRequest)">
+            <summary>
+            Register an user.
+            </summary>
+        </member>
+        <member name="M:CodersAcademy.API.Controllers.UserController.RemoveUser(System.Guid)">
+            <summary>
+            Remove an user by id.
+            </summary>
+        </member>
+        <member name="M:CodersAcademy.API.Controllers.UserController.SaveUserFavoriteMusic(System.Guid,System.Guid)">
+            <summary>
+            Add an favorite music for user by userId and musicId 
+            </summary>
+        </member>
+        <member name="M:CodersAcademy.API.Controllers.UserController.RemoveUserFavoriteMusic(System.Guid,System.Guid)">
+            <summary>
+            Remove an favorite music for user by userId and musicId 
+            </summary>
+        </member>
     </members>
 </doc>
