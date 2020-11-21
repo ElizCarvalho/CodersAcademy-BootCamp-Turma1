@@ -10,8 +10,8 @@ namespace CodersAcademy.API.Repository.Context
 
 		public DbSet<Album> Albums{ get; set; }
 		public DbSet<Music> Musics{ get; set; }
-		public DbSet<User> User{ get; set; }
-		public DbSet<UserFavoriteMusic> UserFavoriteMusic{ get; set; }
+		public DbSet<User> Users{ get; set; }
+		public DbSet<UserFavoriteMusic> UserFavoriteMusics{ get; set; }
 
 		public ApiContext(DbContextOptions<ApiContext> options) : base(options)
 		{
