@@ -17,18 +17,6 @@ namespace CodersAcademy.API.Repository
 			this._context = context;
 		}
 
-		//public async Task<IList<User>> GetAllAsync()
-		//	=> await this._context.User.ToListAsync();
-
-		//public async Task<User> GetByIdAsync(Guid id)
-		//	=> await this._context.Musics.Where(x => x.Id == id).FirstOrDefaultAsync();
-
-		//public async Task DeleteAsync(User model)
-		//{
-		//	this._context.Remove(model);
-		//	await this._context.SaveChangesAsync();
-		//}
-
 		public async Task SaveAsync(User user)
 		{
 			await this._context.Users.AddAsync(user);
@@ -43,6 +31,31 @@ namespace CodersAcademy.API.Repository
 								.ThenInclude(x => x.Album)
 								.Where(x => x.Password == password && x.Email == email)
 								.FirstOrDefaultAsync();
+		}
+
+		public async Task<IList<User>> GetAllAsync()
+			=> await this._context.Users
+								.Include(x => x.FavoriteMusics)
+								.ThenInclude(x => x.Music)
+								.ThenInclude(x => x.Album)
+								.ToListAsync();
+
+		public async Task<User> GetByIdAsync(Guid id)
+			=> await this._context.Users
+								.Include(x => x.FavoriteMusics)
+								.ThenInclude(x => x.Music)
+								.ThenInclude(x => x.Album).Where(x => x.Id == id).FirstOrDefaultAsync();
+
+		public async Task DeleteAsync(User model)
+		{
+			this._context.Remove(model);
+			await this._context.SaveChangesAsync();
+		}
+
+		public async Task UpdateAsync(User user)
+		{
+			this._context.Users.Update(user);
+			await this._context.SaveChangesAsync();
 		}
 	}
 }

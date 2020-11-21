@@ -24,7 +24,7 @@ namespace CodersAcademy.API.Model
 			});
 		}
 
-		public void RemovefavoriteMusic(Music music)
+		public void RemoveFavoriteMusic(Music music)
 		{
 			var favMusic = this.FavoriteMusics.FirstOrDefault(x => x.MusicId == music.Id);
 

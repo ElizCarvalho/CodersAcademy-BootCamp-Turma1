@@ -49,5 +49,15 @@
             Delete a specific Album by Id.
             </summary>
         </member>
+        <member name="M:CodersAcademy.API.Controllers.UserController.GetById(System.Guid)">
+            <summary>
+            Get an user by Id.
+            </summary>
+        </member>
+        <member name="M:CodersAcademy.API.Controllers.UserController.GetAll">
+            <summary>
+            Get a list with all users registered.
+            </summary>
+        </member>
     </members>
 </doc>
