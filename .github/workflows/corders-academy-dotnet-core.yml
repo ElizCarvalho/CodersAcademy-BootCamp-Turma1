@@ -21,8 +21,13 @@ jobs:
       run: dotnet build CodersAcademy/CodersAcademy.sln --configuration Release --no-restore
     - name: Test
       run: dotnet test CodersAcademy/CodersAcademy.sln --no-restore --verbosity normal
+  sonarCloud:
+    runs-on: windows-latest
+    steps:  
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     - name: Install SonarCloud scanner
-        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
