@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CodersAcademy.API.Exception;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -29,7 +30,7 @@ namespace CodersAcademy.API.Model
 			var favMusic = this.FavoriteMusics.FirstOrDefault(x => x.MusicId == music.Id);
 
 			if (favMusic is null)
-				throw new Exception("Não encontrada a música na lista de favoritos");
+				throw new CodersAcademyExceptions("Não encontrada a música na lista de favoritos");
 
 			this.FavoriteMusics.Remove(favMusic);
 		}
