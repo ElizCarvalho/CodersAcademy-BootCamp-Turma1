@@ -48,7 +48,7 @@ namespace CodersAcademy.API.Repository
 
 		public async Task DeleteAsync(User model)
 		{
-			this._context.Remove(model);
+			this._context.Users.Remove(model);
 			await this._context.SaveChangesAsync();
 		}
 

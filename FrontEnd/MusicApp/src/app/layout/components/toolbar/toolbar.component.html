@@ -10,18 +10,35 @@
         <div class="" fxFlex="0 1 auto" fxLayout="row" fxLayoutAlign="start center">
             <button mat-button [matMenuTriggerFor]="userMenu" class="user-button">
                 <div fxLayout="row" fxLayoutAlign="center center">
-                    <img class="avatar mr-0 mr-sm-16" src="assets/images/avatars/Velazquez.jpg">
-                    <span class="username mr-12" fxHide fxShow.gt-sm>Charlie Adams</span>
+                    <div *ngIf="user">
+                        <img class="avatar mr-0 mr-sm-16" src="{{user.photo}}">
+                        <span class="username mr-12" fxHide fxShow.gt-sm>{{user.name}}</span>
+                    </div>
+                    <div *ngIf="!user">
+                        <img class="avatar mr-0 mr-sm-16" src="https://robohash.org/johndoe.png">
+                        <span class="username mr-12" fxHide fxShow.gt-sm>John Doe</span>
+                    </div>
+                    
                     <mat-icon class="s-16" fxHide.xs>keyboard_arrow_down</mat-icon>
                 </div>
             </button>
 
+            
             <mat-menu #userMenu="matMenu" [overlapTrigger]="false">
-                <button mat-menu-item class="">
-                    <mat-icon>exit_to_app</mat-icon>
-                    <span>Logout</span>
-                </button>
+                <div *ngIf="user">
+                    <button mat-menu-item class="" (click)="logout()">
+                        <mat-icon>exit_to_app</mat-icon>
+                        <span>Logout</span>
+                    </button>
+                </div>
+                <div *ngIf="!user">
+                    <button mat-menu-item class="" (click)="login()">
+                        <mat-icon>login</mat-icon>
+                        <span>Login</span>
+                    </button>
+                </div>
             </mat-menu>
+
             <div class="toolbar-separator"></div>
         </div>
     </div>

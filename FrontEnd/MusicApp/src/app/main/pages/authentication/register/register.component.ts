@@ -11,8 +11,10 @@ import { Subject } from "rxjs";
 
 import { FuseConfigService } from "@fuse/services/config.service";
 import { fuseAnimations } from "@fuse/animations";
-import swal from "sweetalert2";
 import { Router } from "@angular/router";
+import { UserService } from 'app/services/user.service';
+import Register from 'app/model/register';
+import swal from "sweetalert2";
 
 @Component({
     selector: "register",
@@ -29,7 +31,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     constructor(
         private _fuseConfigService: FuseConfigService,
-        private _formBuilder: FormBuilder
+        private _formBuilder: FormBuilder,
+        private userService: UserService,
+        private router: Router
     ) {
         this._fuseConfigService.config = {
             layout: {
@@ -65,5 +69,33 @@ export class RegisterComponent implements OnInit, OnDestroy {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
+    }
+
+    register(registerForm){
+        if(registerForm.isValid === false){
+            return;
+        }
+
+        let name = this.registerForm.get("name").value;
+        let email = this.registerForm.get("email").value;
+        let password = this.registerForm.get("password").value;
+        let passwordConfirm = this.registerForm.get("passwordConfirm").value;
+
+        if(password !== passwordConfirm){
+            return;
+        }
+
+        let register = new Register();
+        register.name = name;
+        register.email = email;
+        register.password = password;
+
+        this.userService.register(register).subscribe(result => {
+            this.router.navigate(["auth/login"]);
+        }, (error) => {
+            if(error.status === 404){
+                swal.fire("Ops!","Email ou senha invalido", "error");
+            }
+        });
     }
 }

@@ -9,6 +9,6 @@ namespace CodersAcademy.API.ViewModel.Response
 		public String Name { get; set; }
 		public String Email { get; set; }
 		public String Photo { get; set; }
-		public IList<FavoriteMusicResponse> FavoriteMusics { get; set; }
+		public IList<FavoriteMusicResponse> FavoriteMusics { get; set; } = new List<FavoriteMusicResponse>();
 	}
 }
