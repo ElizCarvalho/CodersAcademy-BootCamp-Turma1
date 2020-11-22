@@ -22,22 +22,21 @@ jobs:
     - name: Test
       run: dotnet test CodersAcademy/CodersAcademy.sln --no-restore --verbosity normal
   sonarCloud:
-    name: SonalCloud
+    name: SonarCloud
     runs-on: windows-latest
-    steps:  
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    - name: Install SonarCloud scanner
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install SonarCloud scanner
         shell: powershell
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
-      - name: Build and analyze
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Build
         shell: powershell
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"ElizCarvalho_CodersAcademy-BootCamp-Turma1" /o:"elizcarvalho-github" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build CodersAcademy/CodersAcademy.sln
