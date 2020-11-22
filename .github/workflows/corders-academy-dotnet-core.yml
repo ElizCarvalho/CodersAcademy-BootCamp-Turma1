@@ -22,6 +22,7 @@ jobs:
     - name: Test
       run: dotnet test CodersAcademy/CodersAcademy.sln --no-restore --verbosity normal
   sonarCloud:
+    name: SonalCloud
     runs-on: windows-latest
     steps:  
     - uses: actions/checkout@v2
