@@ -30,7 +30,7 @@ namespace CodersAcademy.API.Model
 			var favMusic = this.FavoriteMusics.FirstOrDefault(x => x.MusicId == music.Id);
 
 			if (favMusic is null)
-				throw new CodersAcademyExceptions("Não encontrada a música na lista de favoritos");
+				throw new CodersAcademyException("Não encontrada a música na lista de favoritos");
 
 			this.FavoriteMusics.Remove(favMusic);
 		}
